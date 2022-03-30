@@ -5,6 +5,7 @@ const locationRoutes = require('./routes/location')
 const todoRoutes = require('./routes/todo')
 const userRoutes = require('./routes/user')
 const productRoutes = require('./routes/product')
+const auth = require('./middleware/auth')
 
 app.use(express.json())
 
