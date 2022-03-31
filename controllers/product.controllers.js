@@ -1,5 +1,6 @@
 const Product = require("../models/index").Product
 const User = require("../models/index").User
+const jwt = require('jsonwebtoken')
 
 exports.getProduct = async (req, res) => {
     Product.findAll().then(products => {
@@ -41,7 +42,7 @@ exports.getProductByUserId = async (req, res) => {
 }
 
 exports.postProduct = async (req, res) => {
-    const user_id = req.params.id
+    const user_id = req.id;     //req.id ini diambil dari verify pada midleware auth.js
     const body = req.body;
     const name = body.name;
     const price = body.price;
