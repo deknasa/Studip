@@ -42,12 +42,7 @@ exports.getProductByUserId = async (req, res) => {
 }
 
 exports.postProduct = async (req, res) => {
-    // const user_id = req.params.id
-    const sekretKey = "helloworld";
-    const token = req.headers.auth;
-    const decoded = jwt.verify(token, sekretKey);
-    const user_id = decoded.id;
-
+    const user_id = req.id;     //req.id ini diambil dari verify pada midleware auth.js
     const body = req.body;
     const name = body.name;
     const price = body.price;

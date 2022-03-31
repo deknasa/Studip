@@ -1,17 +1,5 @@
 const {regencies, provinces} = require('../data/location')
 
-// exports.getCities = (req, res) => {
-//     const provinceName = req.query.provinceName;
-//     let provinceId;
-//     location.provinces.forEach((item) => {
-//         if (item.name.toLowerCase().includes(provinceName.toLowerCase)) {
-//             provinceId = item.id
-//         }
-//     })
-//     let data = []
-// }
-
-
 exports.getProvinceName = (req, res) => {
     let provinsi = req.query.provinceName;
     let data = [];
@@ -19,7 +7,6 @@ exports.getProvinceName = (req, res) => {
     provinces.forEach((item) => {
         console.log('id : ' + item.id);
         console.log(item.name);
-        // console.log('alt name : ' + item.alt_name);
         if (item.name.toLowerCase().includes(provinsi.toLowerCase())) {
             provinceId = item.id
         }
@@ -56,8 +43,6 @@ exports.getProvinceByCityName = (req, res) => {
         console.log(item.name);
         if (item.name.toLowerCase().split(" ").includes(city.toLowerCase())) {
             provinceId = item.province_id
-            // city = item.name
-            // data.push(item)
         }
     })
     provinces.forEach((item) => {
