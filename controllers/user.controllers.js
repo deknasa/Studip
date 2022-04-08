@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const generateToken  = require('../middleware/auth').generateToken
 
 exports.getUser = async (req, res) => {
-    User.findAll().then(users => {
+    return User.findAll().then(users => {
         res.status(200).send({
             status: "SUCCESS",
             data: users
@@ -65,7 +65,7 @@ exports.signUp = async(req, res) => {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
 
-        User.create({
+        return User.create({
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
@@ -85,8 +85,20 @@ exports.signUp = async(req, res) => {
             })
             .catch((e) => {
                 console.log(e);
+                res.status(500).send({
+                    status: "FAIL",
+                    message: "Gagal memuat users"
+                })
             });
-    });
+        
+    })
+    .catch((e) => {
+        console.log(e);
+        res.status(503).send({
+            status: "FAIL",
+            message: "Gagal memuat users"
+        })
+    })
 };
 
 exports.signIn = async(req, res) => {
@@ -108,7 +120,7 @@ exports.signIn = async(req, res) => {
 
             const isValid = bcrypt.compareSync(password, user.password)
             if (!isValid) {
-                return res.status(400).send({
+                return res.status(403).send({
                     message: "email and password not match",
                 });
             }
@@ -124,6 +136,10 @@ exports.signIn = async(req, res) => {
         })
         .catch((e) => {
             console.log(e);
+            res.status(503).send({
+                status: "FAIL",
+                message: "Gagal memuat users"
+            })
         });
 };
 
