@@ -29,16 +29,6 @@ describe('ProductController.postProduct', () => {
     })
 })
 
-// describe('ProductController.PostProduct.error', () => {
-//     it('should return 503', async () => {
-//         Product.create.mockResolvedValue({
-//             name: "hallo"
-//         })
-//         ProductController.postProduct(req, res);
-//         expect(res.statusCode).not.toBe(200);
-//     })
-// })
-
 describe('ProductController.getProduct', () => {
     it('should return 200', async () => {
         Product.findAll.mockResolvedValue({ 
@@ -68,11 +58,7 @@ describe('ProductController.getProductByUserId', () => {
     it('should return 503', async () => {
         const rejected = Promise.reject({ message: "ini error"});
         Product.findOne.mockResolvedValue(rejected)
-        // Product.findAll.mockRejectedValue(new Error('ini eror'))
         await ProductController.getProductByUserId(req, res)
         expect(res.statusCode).toEqual(503);
-        // expect(res._getData()).toEqual(errData)
     })
 })
-
-

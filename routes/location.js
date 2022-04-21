@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('../controllers/location.controllers')
+const locationController = require('../controllers/location.controllers')
 
-router.get('/getProvinceName', controller.getProvinceName)
-router.get('/getCitiesNameByWordCount', controller.getCitiesNameByWordCount)
-router.get('/getProvinceByCityName', controller.getProvinceByCityName)
+router.get('/getProvinceName', locationController.getProvinceName)
+router.get('/getCitiesNameByWordCount', locationController.getCitiesNameByWordCount)
+router.get('/getProvinceByCityName', locationController.getProvinceByCityName)
 
 
 module.exports = router

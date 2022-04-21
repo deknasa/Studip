@@ -3,20 +3,13 @@ const app = express()
 const port = 3000
 const router = express.Router();
 const db = require('../config/db')
-const controller = require('../controllers/todo.controllers')
-// const controllers = require('../controllers/location.controllers')
-const locationRoutes = require('../data/location')
+const todoController = require('../controllers/todo.controllers')
 
 router.use(express.json())
 
-router.get('/', controller.getTodo)
-router.post('/', controller.postTodo)
-router.put('/:id', controller.updateTodo)
-router.delete('/delete/:id', controller.deleteTodo)
-
-// router.get('/:provinceName', controllers.getProvinceName)
-// router.get('/:count', controllers.getCitiesNameByWordCount)
-// router.get('/:cityName', controllers.getProvinceByCityName)
-
+router.get('/', todoController.getTodo)
+router.post('/', todoController.postTodo)
+router.put('/:id', todoController.updateTodo)
+router.delete('/delete/:id', todoController.deleteTodo)
 
 module.exports = router;

@@ -24,10 +24,8 @@ describe('UserController.getUser', () => {
     it('should return 503', async () => {
         const rejected = Promise.reject({ message: "ini error"});
         User.findAll.mockResolvedValue(rejected)
-        // Product.findAll.mockRejectedValue(new Error('ini eror'))
         await UserController.getUser(req, res)
         expect(res.statusCode).toEqual(503);
-        // expect(res._getData()).toEqual(errData)
     })
 })
 
@@ -42,10 +40,8 @@ describe('UserController.postUser', () => {
     it('should return 503', async () => {
         const rejected = Promise.reject({ message: "ini error"});
         User.create.mockResolvedValue(rejected)
-        // Product.findAll.mockRejectedValue(new Error('ini eror'))
         await UserController.postUser(req, res)
         expect(res.statusCode).toEqual(503);
-        // expect(res._getData()).toEqual(errData)
     })
 }) 
 
@@ -70,18 +66,14 @@ describe('UserController.signUp', () => {
         const rejected = Promise.reject({ message: "ini error"});
         User.findOne.mockResolvedValue(null)
         User.create.mockResolvedValue(rejected)
-        // Product.findAll.mockRejectedValue(new Error('ini eror'))
         await UserController.signUp(req, res)
         expect(res.statusCode).toEqual(500);
-        // expect(res._getData()).toEqual(errData)
     })
     it('should return 503', async () => {
         const rejected = Promise.reject({ message: "ini error"});
         User.findOne.mockResolvedValue(rejected)
-        // Product.findAll.mockRejectedValue(new Error('ini eror'))
         await UserController.signUp(req, res)
         expect(res.statusCode).toEqual(503);
-        // expect(res._getData()).toEqual(errData)
     })
 })
 
@@ -110,9 +102,7 @@ describe('UserController.signIn', () => {
     it('should return 503', async () => {
         const rejected = Promise.reject({ message: "ini error"});
         User.findOne.mockResolvedValue(rejected)
-        // Product.findAll.mockRejectedValue(new Error('ini eror'))
         await UserController.signIn(req, res)
         expect(res.statusCode).toEqual(503);
-        // expect(res._getData()).toEqual(errData)
     })
 })

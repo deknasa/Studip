@@ -12,7 +12,6 @@ exports.getProvinceName = (req, res) => {
         }
     })
     regencies.forEach((item) => {
-        // console.log('province id : ' + item.province_id);
         if (item.province_id == provinceId) {
             data.push(item)
         }
@@ -26,7 +25,6 @@ exports.getCitiesNameByWordCount = (req, res) => {
     let data = []
     regencies.forEach((item) => {
         console.log(item.id);
-        // console.log(item.name);
         if (item.name.split(" ").length == wordCount) {
             data.push(item)
         }
