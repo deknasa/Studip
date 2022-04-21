@@ -3,7 +3,7 @@ const User = require("../models/index").User
 const jwt = require('jsonwebtoken')
 
 exports.getProduct = async (req, res) => {
-    Product.findAll().then(products => {
+    return Product.findAll().then(products => {
         res.status(200).send({
             status: "sukses",
             data: products
@@ -20,7 +20,7 @@ exports.getProduct = async (req, res) => {
 
 exports.getProductByUserId = async (req, res) => {
     const id = req.params.id
-    User.findOne({where: {id: id},
+    return User.findOne({where: {id: id},
         include: {
             model: Product,
             as: 'products'

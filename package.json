@@ -1,10 +1,9 @@
 {
   "name": "MVC-ExpressJS",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "start": "node index.js",
     "db:create:migrate": "sequelize migration:generate --name",
     "db-migrate": "sequelize db:migrate",
@@ -18,9 +17,25 @@
     "express": "^4.17.3",
     "express-middleware": "^3.4.2",
     "jsonwebtoken": "^8.5.1",
+    "node-mocks-http": "^1.11.0",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
     "sequelize": "^6.17.0",
     "sequelize-cli": "^6.4.1"
-  }
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deknasa/Studip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deknasa/Studip/issues"
+  },
+  "homepage": "https://github.com/deknasa/Studip#readme",
+  "description": ""
 }

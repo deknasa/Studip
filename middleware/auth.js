@@ -3,7 +3,7 @@ let privateKey = 'helloworld'
 
 const verify = async (req, res, next) => {
     const token = req.headers["auth"]    
-    jwt.verify(token, privateKey, (err, decoded)=> {
+    return jwt.verify(token, privateKey, (err, decoded)=> {
         if(err) {
             return res.status(401).send({
                 err: err
@@ -20,6 +20,7 @@ const generateToken = (payload) => {
          expiresIn: "1h"
     });
 }
+
 module.exports = {
     verify,
     generateToken
