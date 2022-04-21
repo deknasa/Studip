@@ -28,8 +28,6 @@ describe('auth.verify', () => {
           expect(jwt.verify).toHaveBeenCalled();
           expect(req).toHaveProperty("id", "123");
           expect(next).toHaveBeenCalled()
-        // await ProductController.postProduct(req, res);
-        // expect(res.statusCode).toBe(200);
     })
     it('should return 401', async () => {
         jwt.verify = jest.fn().mockImplementation(
@@ -44,7 +42,6 @@ describe('auth.verify', () => {
           await auth.verify(req, res, next);
           expect(jwt.verify).toHaveBeenCalled();
           expect(res.statusCode).toBe(401);
-        //   expect(next).toHaveBeenCalled()
     })
 })
 

@@ -40,10 +40,8 @@ describe('ProductController.getProduct', () => {
     it('should return 503', async () => {
         const rejected = Promise.reject({ message: "ini error"});
         Product.findAll.mockResolvedValue(rejected)
-        // Product.findAll.mockRejectedValue(new Error('ini eror'))
         await ProductController.getProduct(req, res)
         expect(res.statusCode).toEqual(503);
-        // expect(res._getData()).toEqual(errData)
     })
 })
 
